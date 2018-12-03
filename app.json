@@ -1,0 +1,26 @@
+{
+  "id": "87ce762a-5779-4799-9751-54cac1866b22",
+  "name": "SD Seminar",
+  "publisher": "D. E. Veloper",
+  "brief": "My Seminar Module",
+  "description": "My Awesome Seminar module",
+  "version": "1.0.0.0",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "http://ba-consult.dk",
+  "logo": "",
+  "capabilities": [],
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "13.0.0.0",
+  "application": "13.0.0.0",
+  "idRange": {
+    "from": 50100,
+    "to": 50149
+  },
+  "runtime": "2.1",
+  "showMyCode": true,
+  "features": ["TranslationFile"],
+  "target": "Internal"
+}
