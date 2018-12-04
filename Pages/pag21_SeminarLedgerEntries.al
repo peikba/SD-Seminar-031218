@@ -1,13 +1,13 @@
 page 50121 "CSD Seminar Ledger Entries"
 // CSD1.00 - 2018-01-01 - D. E. Veloper
 // Chapter 7 - Lab 2-9
-
+//   Chapter 8 - Lab 2 - 4
+//   Added Action Navigate
 {
     Caption='Seminar Ledger Entries';
     PageType = List;
     SourceTable = "CSD Seminar Ledger Entry";
     Editable=false;
-    UsageCategory=Tasks;
 
     layout
     {
@@ -85,6 +85,28 @@ page 50121 "CSD Seminar Ledger Entries"
             }
             systempart("links";Links)
             {
+            }
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action("&Navigate")
+            {
+                Caption='&Navigate';
+                Image=Navigate;
+                Promoted=true;
+                PromotedCategory=Process;
+
+                trigger OnAction();
+                var
+                    Navigate : page Navigate;
+                begin
+                    Navigate.SetDoc("Posting Date","Document No.");
+                    Navigate.RUN;
+                end;
             }
         }
     }
