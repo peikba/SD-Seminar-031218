@@ -5,6 +5,8 @@ table 50110 "CSD Seminar Reg. Header"
     //     - Created new table
     //   Chapter 8 - Lab 2-3
     //     - Added LookupId and DrillDownPageId
+    //   Chapter 9 - Lab 1-1
+    //     - Added Field "No. Printed"
     Caption = 'Seminar Registration Header';
     LookupPageId= "CSD Posted Seminar Reg. List";
     DrillDownPageId= "CSD Posted Seminar Reg. List";
@@ -290,6 +292,11 @@ table 50110 "CSD Seminar Reg. Header"
         Field(28; "Posting No."; Code[20])
         {
             Caption = 'Posting No.';
+        }
+        field(40;"No. Printed";Integer)
+        {
+            Caption='No. Printed';
+            Editable=false;
         }
     }
 

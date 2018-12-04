@@ -1,96 +1,73 @@
-report 50101 "CSD Seminar Reg. Part. List"
+report 50101 SeminarRegParticipantList
 {
-    Caption = 'Seminar Reg. Participants List';
-    UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
-    RDLCLayout = './Layouts/SeminarRegParticipantList.rdl';
-
+    Caption='Seminar Reg.- Participant List';
+    DefaultLayout=RDLC;
+    RDLCLayout='./Layouts/SeminarRegParticipantList.rdl';
+    UsageCategory=ReportsAndAnalysis;
     dataset
     {
-        dataitem("CSD Seminar Reg. Header"; "CSD Seminar Reg. Header")
+        dataitem(SeminarRegistrationHeader;"CSD Seminar Reg. Header")
         {
-            RequestFilterFields = "No.", "Seminar No.";
-            column(No_; "No.")
-            {
-                IncludeCaption = true;
-            }
-            column(Seminar_No_; "Seminar No.")
-            {
-                IncludeCaption = true;
-            }
-            column(Seminar_Name; "Seminar Name")
-            {
-                IncludeCaption = true;
-            }
-            column(Instructor_Name; "Instructor Name")
-            {
-                IncludeCaption = true;
-            }
-            column(Room_Name; "Room Name")
-            {
-                IncludeCaption = true;
-            }
-            column(Duration; Duration)
-            {
-                IncludeCaption = true;
-            }
-            column(Seminar_Price; "Seminar Price")
-            {
-                IncludeCaption = true;
-            }
-            dataitem("CSD Seminar Registration Line"; "CSD Seminar Registration Line")
-            {
-                DataItemTableView = sorting ("Document No.");
-                DataItemLink = "Document No." = field ("No.");
+            DataItemTableView=sorting("No.");
+            RequestFilterFields="No.","Seminar No."; 
 
-                column(Bill_to_Customer_No_; "Bill-to Customer No.")
-                {
-                    IncludeCaption = true;
-                }
-                column(Participant_Contact_No_; "Participant Contact No.")
-                {
-                    IncludeCaption = true;
-                }
-                column(Participant_Name; "Participant Name")
-                {
-                    IncludeCaption = true;
-                }
+            column(No_;"No.")
+            {
+                IncludeCaption=true;
             }
+            column(Seminar_No_;"Seminar No.")
+            {
+                IncludeCaption=true;
+            }
+            column(Seminar_Name;"Seminar Name")
+            {
+                IncludeCaption=true;
+            }
+            column(Starting_Date;"Starting Date")
+            {
+                IncludeCaption=true;
+            }
+            column(Duration;Duration)
+            {
+                IncludeCaption=true;
+            }
+            column(Instructor_Name;"Instructor Name")
+            {
+                IncludeCaption=true;
+            }
+            column(Room_Name;"Room Name")
+            {
+                IncludeCaption=true;
+            }
+            dataitem(SeminarRegistrationLine;"CSD Seminar Registration Line")
+            {
+                DataItemTableView=sorting("Document No.","Line No.");
+                DataItemLink="Document No."=field("No.");
+
+                column(Bill_to_Customer_No_;"Bill-to Customer No.")
+                {
+                    IncludeCaption=true;
+                }
+                column(Participant_Contact_No_;"Participant Contact No.")
+                {
+                    IncludeCaption=true;
+                }
+                column(Participant_Name;"Participant Name")
+                {
+                    IncludeCaption=true;
+                }
+            }   
         }
-        dataitem("Company Information"; "Company Information")
+        dataitem("Company Information";"Company Information")
         {
-            DataItemTableView = sorting ("Primary Key");
-            column(Picture; Picture)
+            column(Company_Name;Name)
             {
-
-            }
-            column(CompanyName; CompanyName())
-            {
-
             }
         }
     }
-
-    requestpage
+    
+    labels
     {
-        layout
-        {
-            area(Content)
-            {
-                group(GroupName)
-                {
-                    field(ShowDetails; ShowDetails)
-                    {
-                        ApplicationArea = All;
-
-                    }
-                }
-            }
-        }
-
-
+        SeminarRegistrationHeaderCap ='Seminar Registration Header';
     }
-
-    var
-        ShowDetails: Boolean;
 }
