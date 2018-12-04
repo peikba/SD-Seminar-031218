@@ -12,9 +12,9 @@ table 50101 "CSD Seminar"
 
             trigger OnValidate();
             begin
-                if "No." <> xRec."No." then begin 
-                    SeminarSetup.GET; 
-                    NoSeriesMgt.TestManual(SeminarSetup."Seminar Nos."); 
+                if "No." <> xRec."No." then begin
+                    SeminarSetup.GET;
+                    NoSeriesMgt.TestManual(SeminarSetup."Seminar Nos.");
                     "No. Series" := '';
                 end;
             end;
@@ -25,14 +25,14 @@ table 50101 "CSD Seminar"
 
             trigger OnValidate();
             begin
-                if("Search Name" = UpperCase(xRec.Name)) or("Search Name" = '') then
+                if ("Search Name" = UpperCase(xRec.Name)) or ("Search Name" = '') then
                     "Search Name" := Name;
-            end;        
+            end;
         }
         field(30; "Seminar Duration"; Decimal)
         {
             Caption = 'Seminar Duration';
-            DecimalPlaces=0:1;
+            DecimalPlaces = 0 : 1;
         }
         field(40; "Minimum Participants"; Integer)
         {
@@ -60,7 +60,7 @@ table 50101 "CSD Seminar"
             Caption = 'Comment';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = exist("CSD Seminar Comment Line" where("Table Name"=filter("Seminar"),"No."=Field("No.")));
+            CalcFormula = exist ("CSD Seminar Comment Line" where ("Table Name" = filter ("Seminar"), "No." = Field ("No.")));
         }
         field(100; "Seminar Price"; Decimal)
         {
@@ -73,7 +73,7 @@ table 50101 "CSD Seminar"
 
             trigger OnValidate();
             begin
-                if(xRec."Gen. Prod. Posting Group" <> "Gen. Prod. Posting Group") then begin
+                if (xRec."Gen. Prod. Posting Group" <> "Gen. Prod. Posting Group") then begin
                     if GenProdPostingGroup.ValidateVatProdPostingGroup(GenProdPostingGroup, "Gen. Prod. Posting Group") then
                         Validate("VAT Prod. Posting Group", GenProdPostingGroup."Def. VAT Prod. Posting Group");
                 end;
@@ -125,9 +125,9 @@ table 50101 "CSD Seminar"
     trigger OnDelete();
     begin
         CommentLine.Reset;
-        CommentLine.SetRange("Table Name", CommentLine."Table Name"::Seminar); 
+        CommentLine.SetRange("Table Name", CommentLine."Table Name"::Seminar);
         CommentLine.SetRange("No.", "No.");
-        CommentLine.DeleteAll; 
+        CommentLine.DeleteAll;
     end;
 
     trigger OnRename();
@@ -137,8 +137,7 @@ table 50101 "CSD Seminar"
 
     procedure AssistEdit(): Boolean;
     begin
-        with Seminar do
-        begin
+        with Seminar do begin
             Seminar := Rec;
             SeminarSetup.get;
             SeminarSetup.TestField("Seminar Nos.");
