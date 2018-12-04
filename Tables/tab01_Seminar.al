@@ -90,6 +90,12 @@ table 50101 "CSD Seminar"
             Caption = 'No. Series';
             TableRelation = "No. Series";
         }
+        field(131; "Hi Mom"; Code[10])
+        {
+            Editable = false;
+            Caption = 'Hi Mom';
+            TableRelation = "No. Series";
+        }
 
     }
 

@@ -3,9 +3,8 @@ page 50110 "CSD Seminar Registration"
     // CSD1.00 - 2018-01-01 - D. E. Veloper
     //   Chapter 6 - Lab 3-1
     //     - Created new page
-    //   Chapter 8 - Lab 2 - 4
-    //   Added Action Navigate
-
+    //   Chapter 7 - Lab 5-8
+    //     - Added Post Action  
 
     Caption = 'Seminar Registration';
     PageType = Document;
@@ -148,6 +147,19 @@ page 50110 "CSD Seminar Registration"
                     RunObject = Page 50124;
                     RunPageLink = "Document No." = Field ("No.");
                 }
+            }
+        }
+        area(Processing)
+        {
+            action("&Post")
+            {
+                Caption = '&Post';
+                Image = PostDocument;
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                ShortcutKey = F9;
+                RunObject = codeunit "CSD Seminar-Post (Yes/No)";
             }
         }
     }
